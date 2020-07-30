@@ -57,11 +57,8 @@ $(async function(){
           </div>
         </div>
       </li>
-    `)
-  })
+    `);
 
-  $('#flavor').val('');
-  $('#size').val('');
-  $('#rating').val('');
-  $('#image').val('');
-})
+    $('input').val('');
+  });
+});
