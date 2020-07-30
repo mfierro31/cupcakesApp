@@ -1,6 +1,7 @@
 """Flask app for Cupcakes"""
 from flask import Flask, request, jsonify, render_template
 from models import db, connect_db, Cupcake
+import validators
 
 app = Flask(__name__)
 
@@ -32,6 +33,9 @@ def create_cupcake():
     # instead of having to enter each field one at a time manually
     
     json = request.json
+
+    if not json['image'] or not validators.url(json['image']):
+        json['image'] = None
 
     new_cupcake = Cupcake(**json)
     db.session.add(new_cupcake)
